@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.6.1": {
+      "ResourceBasedAuthorization.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETFramework,Version=v4.6.1",
+        "compile": {
+          "net461/ResourceBasedAuthorization.Models.dll": {}
+        },
+        "runtime": {
+          "net461/ResourceBasedAuthorization.Models.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ResourceBasedAuthorization.Models/1.0.0": {
+      "type": "project",
+      "path": "../ResourceBasedAuthorization.Models/project.json",
+      "msbuildProject": "../ResourceBasedAuthorization.Models/ResourceBasedAuthorization.Models.xproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "ResourceBasedAuthorization.Models >= 1.0.0-*"
+    ],
+    ".NETFramework,Version=v4.6.1": []
+  },
+  "tools": {},
+  "projectFileToolGroups": {},
+  "packageFolders": {
+    "C:\\Users\\Lutando\\.nuget\\packages\\": {}
+  }
+}
