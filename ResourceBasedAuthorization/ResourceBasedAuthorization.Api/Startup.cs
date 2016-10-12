@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ResourceBasedAuthorization.Api.Authorization.Handlers;
+using ResourceBasedAuthorization.Models.Interfaces;
+using ResourceBasedAuthorization.Repositories.PostAggregate;
 
 namespace ResourceBasedAuthorization.Api
 {
@@ -20,15 +24,19 @@ namespace ResourceBasedAuthorization.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //adds the authN handler to the services DI container
+            services.AddTransient<IAuthorizationHandler, PostAuthorizationHandler>();
+
+            services.AddTransient<IPostRepository, PostRepository>();
 
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            
+            //you might want to add some sort of middleware that populates the principle
+            //a common one to use for JWT validation is the JwtBearerAuthentication M/W
 
 
             app.UseMvc();

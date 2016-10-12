@@ -17,7 +17,7 @@ namespace ResourceBasedAuthorization.Models.Entities
             Username = username;
             Text = text;
             Created = created;
-            Modified = created;
+            Modified = modified;
         }
 
         public Post(string username, string text)
@@ -30,6 +30,11 @@ namespace ResourceBasedAuthorization.Models.Entities
         {
             Text = text;
             Modified = DateTime.Now;
+        }
+
+        public static Post Hydrate(Guid id, string username, string text, DateTime created, DateTime modified)
+        {
+            return new Post(id,username,text,created,modified);
         }
 
         
